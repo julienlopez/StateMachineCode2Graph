@@ -42,7 +42,7 @@ if(ENABLE_TESTING)
     list(APPEND CONAN_PACKAGES catch2/2.13.8)
     # conan_cmake_configure(REQUIRES catch2/2.13.8 GENERATORS cmake_find_package BUILD missing)
 endif()
-message("installing " ${CONAN_PACKAGES})
+message("installing ${CONAN_PACKAGES}")
 conan_cmake_configure(REQUIRES ${CONAN_PACKAGES} GENERATORS cmake_find_package BUILD missing)
 
 find_package(Microsoft.GSL)
