@@ -38,7 +38,7 @@ conan_cmake_configure(REQUIRES tl-expected/20190710 BASIC_SETUP CMAKE_TARGETS)
 conan_cmake_configure(REQUIRES ms-gsl/3.1.0 BASIC_SETUP CMAKE_TARGETS)
 if(ENABLE_TESTING)
     message("Enabling Tests.")
-    conan_cmake_configure(REQUIRES catch2/2.13.8 GENERATORS cmake_find_package)
+    conan_cmake_configure(REQUIRES catch2/2.13.8 GENERATORS cmake_find_package BUILD missing)
 endif()
 
 conan_cmake_autodetect(settings)
