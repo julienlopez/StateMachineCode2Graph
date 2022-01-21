@@ -42,10 +42,18 @@ if(ENABLE_TESTING)
 endif()
 
 conan_cmake_autodetect(settings)
-conan_cmake_install(PATH_OR_REFERENCE .
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") # gcc
+    conan_cmake_install(PATH_OR_REFERENCE .
+                    BUILD missing
+                    REMOTE conancenter
+                    SETTINGS ${settings} 
+                    SETTINGS compiler.libcxx=libstdc++11)
+else()                
+    conan_cmake_install(PATH_OR_REFERENCE .
                     BUILD missing
                     REMOTE conancenter
                     SETTINGS ${settings})
+endif()
 
 add_subdirectory(lib)
 add_subdirectory(exe) 
