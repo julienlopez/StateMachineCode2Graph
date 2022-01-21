@@ -15,6 +15,6 @@ target_include_directories(${LIBRARY_TARGET_NAME} INTERFACE
     "$<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${CMAKE_INSTALL_INCLUDEDIR}>"
 )
 
-target_link_libraries(${LIBRARY_TARGET_NAME} PUBLIC Microsoft.GSL::GSL)
+target_link_libraries(${LIBRARY_TARGET_NAME} PUBLIC Microsoft.GSL::Microsoft.GSL)
 
 message(STATUS "Created target ${LIBRARY_TARGET_NAME} for export ${PROJECT_NAME}.")
