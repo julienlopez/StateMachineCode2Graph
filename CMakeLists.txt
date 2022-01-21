@@ -34,12 +34,18 @@ if(NOT EXISTS ${CMAKE_BINARY_DIR}/conan.cmake)
 endif()
 include(${CMAKE_CURRENT_BINARY_DIR}/conan.cmake)
 
-conan_cmake_configure(REQUIRES tl-expected/20190710 BASIC_SETUP CMAKE_TARGETS)
-conan_cmake_configure(REQUIRES ms-gsl/3.1.0 BASIC_SETUP CMAKE_TARGETS)
+set(CONAN_PACKAGES tl-expected/20190710 ms-gsl/3.1.0)
+# conan_cmake_configure(REQUIRES tl-expected/20190710 BASIC_SETUP CMAKE_TARGETS)
+# conan_cmake_configure(REQUIRES ms-gsl/3.1.0 BASIC_SETUP CMAKE_TARGETS BUILD missing)
 if(ENABLE_TESTING)
     message("Enabling Tests.")
-    conan_cmake_configure(REQUIRES catch2/2.13.8 GENERATORS cmake_find_package BUILD missing)
+    list(APPEND CONAN_PACKAGES catch2/2.13.8)
+    # conan_cmake_configure(REQUIRES catch2/2.13.8 GENERATORS cmake_find_package BUILD missing)
 endif()
+message("installing " ${CONAN_PACKAGES})
+conan_cmake_configure(REQUIRES ${CONAN_PACKAGES} GENERATORS cmake_find_package BUILD missing)
+
+find_package(Microsoft.GSL)
 
 conan_cmake_autodetect(settings)
 if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU") # gcc

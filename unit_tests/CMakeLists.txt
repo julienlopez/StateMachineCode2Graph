@@ -1,7 +1,7 @@
 set(EXE_TARGET_NAME UnitTests)
 
 file(GLOB_RECURSE SOURCE_FILES "main.cpp")
-add_executable(${EXE_TARGET_NAME} ${SOURCE_FILES})
+add_executable(${EXE_TARGET_NAME} ${SOURCE_FILES} "testStateMachine.cpp")
 
 find_package(catch2)
 
